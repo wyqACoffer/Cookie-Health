@@ -1,0 +1,21 @@
+# Uncomment the next line to define a global platform for your project
+# platform :ios, '9.0'
+
+target 'Cookie-Health' do
+  # Comment the next line if you don't want to use dynamic frameworks
+  use_frameworks!
+
+  # Pods for Cookie-Health
+  pod 'Anchorage'
+  pod 'LookinServer', :configurations => ['Debug']
+
+  target 'Cookie-HealthTests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+  target 'Cookie-HealthUITests' do
+    # Pods for testing
+  end
+
+end

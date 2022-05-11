@@ -1,0 +1,6 @@
+framework module Pods_Cookie_HealthTests {
+  umbrella header "Pods-Cookie-HealthTests-umbrella.h"
+
+  export *
+  module * { export * }
+}
