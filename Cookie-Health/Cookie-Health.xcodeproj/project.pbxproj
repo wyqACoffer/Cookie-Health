@@ -11,7 +11,11 @@
 		044487B7282A6402000AB7CF /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044487B6282A6402000AB7CF /* NavigationController.swift */; };
 		048274C92827A059006161DF /* GlobalProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048274C82827A059006161DF /* GlobalProperties.swift */; };
 		048274CF2827C57A006161DF /* ToolView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048274CE2827C57A006161DF /* ToolView.swift */; };
+		0485AECE282D1DF40097B69C /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0485AECD282D1DF40097B69C /* ResultViewController.swift */; };
+		0485AED0282D206C0097B69C /* RecognizedTextDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0485AECF282D206B0097B69C /* RecognizedTextDataSource.swift */; };
 		04CBE211282BE478001F0A4D /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 04CBE210282BE462001F0A4D /* Info.plist */; };
+		04DB2E1B282E4EF30037A14C /* StyleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DB2E1A282E4EF30037A14C /* StyleViewController.swift */; };
+		04DB2E1D282E73B70037A14C /* HandleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DB2E1C282E73B70037A14C /* HandleViewController.swift */; };
 		04DEE6F72823D3BA0005C74A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DEE6F62823D3BA0005C74A /* AppDelegate.swift */; };
 		04DEE6F92823D3BA0005C74A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DEE6F82823D3BA0005C74A /* SceneDelegate.swift */; };
 		04DEE6FB2823D3BA0005C74A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DEE6FA2823D3BA0005C74A /* ViewController.swift */; };
@@ -46,7 +50,11 @@
 		044487B6282A6402000AB7CF /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 		048274C82827A059006161DF /* GlobalProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalProperties.swift; sourceTree = "<group>"; };
 		048274CE2827C57A006161DF /* ToolView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolView.swift; sourceTree = "<group>"; };
+		0485AECD282D1DF40097B69C /* ResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
+		0485AECF282D206B0097B69C /* RecognizedTextDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecognizedTextDataSource.swift; sourceTree = "<group>"; };
 		04CBE20F282BE462001F0A4D /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "zh-Hans"; path = "zh-Hans.lproj/Info.plist"; sourceTree = "<group>"; };
+		04DB2E1A282E4EF30037A14C /* StyleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyleViewController.swift; sourceTree = "<group>"; };
+		04DB2E1C282E73B70037A14C /* HandleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandleViewController.swift; sourceTree = "<group>"; };
 		04DEE6F32823D3BA0005C74A /* Cookie-Health.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Cookie-Health.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		04DEE6F62823D3BA0005C74A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		04DEE6F82823D3BA0005C74A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -96,6 +104,45 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		04DB2E1E282E76D20037A14C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				0485AECF282D206B0097B69C /* RecognizedTextDataSource.swift */,
+				048274C82827A059006161DF /* GlobalProperties.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		04DB2E20282E76E30037A14C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				048274CE2827C57A006161DF /* ToolView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		04DB2E21282E76E80037A14C /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				04DEE6FA2823D3BA0005C74A /* ViewController.swift */,
+				04DB2E1A282E4EF30037A14C /* StyleViewController.swift */,
+				044487B6282A6402000AB7CF /* NavigationController.swift */,
+				044487B4282A60CF000AB7CF /* TableViewController.swift */,
+				0485AECD282D1DF40097B69C /* ResultViewController.swift */,
+				04DB2E1C282E73B70037A14C /* HandleViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		04DB2E22282E77040037A14C /* init */ = {
+			isa = PBXGroup;
+			children = (
+				04DEE6F62823D3BA0005C74A /* AppDelegate.swift */,
+				04DEE6F82823D3BA0005C74A /* SceneDelegate.swift */,
+			);
+			path = init;
+			sourceTree = "<group>";
+		};
 		04DEE6EA2823D3BA0005C74A = {
 			isa = PBXGroup;
 			children = (
@@ -121,13 +168,10 @@
 		04DEE6F52823D3BA0005C74A /* Cookie-Health */ = {
 			isa = PBXGroup;
 			children = (
-				04DEE6F62823D3BA0005C74A /* AppDelegate.swift */,
-				04DEE6F82823D3BA0005C74A /* SceneDelegate.swift */,
-				04DEE6FA2823D3BA0005C74A /* ViewController.swift */,
-				044487B6282A6402000AB7CF /* NavigationController.swift */,
-				044487B4282A60CF000AB7CF /* TableViewController.swift */,
-				048274C82827A059006161DF /* GlobalProperties.swift */,
-				048274CE2827C57A006161DF /* ToolView.swift */,
+				04DB2E22282E77040037A14C /* init */,
+				04DB2E1E282E76D20037A14C /* Model */,
+				04DB2E20282E76E30037A14C /* View */,
+				04DB2E21282E76E80037A14C /* Controller */,
 				04DEE6FF2823D3BB0005C74A /* Assets.xcassets */,
 				04CBE210282BE462001F0A4D /* Info.plist */,
 			);
@@ -414,11 +458,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				04DEE6FB2823D3BA0005C74A /* ViewController.swift in Sources */,
+				04DB2E1D282E73B70037A14C /* HandleViewController.swift in Sources */,
 				044487B5282A60CF000AB7CF /* TableViewController.swift in Sources */,
+				04DB2E1B282E4EF30037A14C /* StyleViewController.swift in Sources */,
 				04DEE6F72823D3BA0005C74A /* AppDelegate.swift in Sources */,
+				0485AECE282D1DF40097B69C /* ResultViewController.swift in Sources */,
 				048274CF2827C57A006161DF /* ToolView.swift in Sources */,
 				04DEE6F92823D3BA0005C74A /* SceneDelegate.swift in Sources */,
 				044487B7282A6402000AB7CF /* NavigationController.swift in Sources */,
+				0485AED0282D206C0097B69C /* RecognizedTextDataSource.swift in Sources */,
 				048274C92827A059006161DF /* GlobalProperties.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
