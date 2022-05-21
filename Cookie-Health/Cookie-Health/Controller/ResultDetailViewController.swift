@@ -1,19 +1,21 @@
 //
-//  ResultViewController.swift
+//  ResultDetailViewController.swift
 //  Cookie-Health
 //
-//  Created by Acoffer on 2022/5/12.
+//  Created by Acoffer on 2022/5/20.
 //
+
+import UIKit
 
 import UIKit
 import Anchorage
 import Vision
 import AVFoundation
 
-class ResultViewController: UIViewController, UINavigationControllerDelegate {
+class ResultDetailViewController: UIViewController, UINavigationControllerDelegate {
     var textView = UITextView()
     var transcript = ""
-    var saveView = ToolView(image: UIImage(named: "保存"))
+    var deleteView = ToolView(image: UIImage(named: "删除"))
     var speakerView = ToolView(image: UIImage(systemName: "speaker.wave.2.circle.fill"))
     var playState = false
     var ifPlayFinished = true
@@ -29,7 +31,7 @@ class ResultViewController: UIViewController, UINavigationControllerDelegate {
     private func configView() {
         self.view.backgroundColor = .white
         self.view.addSubview(self.textView)
-        self.view.addSubview(self.saveView)
+        self.view.addSubview(self.deleteView)
         self.view.addSubview(self.speakerView)
         self.textView.text = transcript
         self.textView.topAnchor == self.view.topAnchor + 86
@@ -38,10 +40,10 @@ class ResultViewController: UIViewController, UINavigationControllerDelegate {
         self.textView.leftAnchor == self.view.leftAnchor + 20
         self.textView.layoutManager.allowsNonContiguousLayout = false
         self.textView.font = .boldSystemFont(ofSize: 30)
-        self.saveView.centerXAnchor == self.view.centerXAnchor + 20
-        self.saveView.bottomAnchor == self.view.bottomAnchor - 20
+        self.deleteView.centerXAnchor == self.view.centerXAnchor + 20
+        self.deleteView.bottomAnchor == self.view.bottomAnchor - 20
         self.speakerView.leftAnchor == self.view.leftAnchor + 10
-        self.speakerView.centerYAnchor == self.saveView.centerYAnchor
+        self.speakerView.centerYAnchor == self.deleteView.centerYAnchor
         self.speakerView.widthAnchor == self.speakerView.frame.width * 2.5
         self.speakerView.heightAnchor == self.speakerView.frame.height * 2.5
         self.speakerView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.didTapSpeaker)))
@@ -51,7 +53,7 @@ class ResultViewController: UIViewController, UINavigationControllerDelegate {
         self.utterance.postUtteranceDelay = 0.8
         self.utterance.preUtteranceDelay = 1
         self.utterance.rate = 0.4
-        self.saveView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.didTapSaveView)))
+        self.deleteView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.didTapdeleteView)))
     }
     
     private func currentTime() -> String {
@@ -90,7 +92,7 @@ class ResultViewController: UIViewController, UINavigationControllerDelegate {
         }
     }
     
-    @objc private func didTapSaveView() {
+    @objc private func didTapdeleteView() {
         var inputText = UITextField()
         let alertController = UIAlertController(title: "提示", message: "请输入标题", preferredStyle: .alert)
         let fineAction = UIAlertAction(title: "确定", style: .default) { action in
@@ -129,7 +131,7 @@ class ResultViewController: UIViewController, UINavigationControllerDelegate {
 
 }
 // MARK: RecognizedTextDataSource
-extension ResultViewController: RecognizedTextDataSource {
+extension ResultDetailViewController: RecognizedTextDataSource {
     func addRecognizedText(recognizedText: [VNRecognizedTextObservation]) {
         let maximumCandidates = 1
         for observation in recognizedText {
@@ -142,7 +144,7 @@ extension ResultViewController: RecognizedTextDataSource {
     }
 }
 
-extension ResultViewController: AVSpeechSynthesizerDelegate {
+extension ResultDetailViewController: AVSpeechSynthesizerDelegate {
     func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didFinish utterance: AVSpeechUtterance) {
         self.speakerView.image = UIImage(systemName: "speaker.wave.2.circle.fill")
         self.ifPlayFinished = true

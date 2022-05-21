@@ -10,6 +10,10 @@ import UIKit
 class ToolView: UIImageView {
     override init(image: UIImage?) {
         super.init(image: image)
+        self.configView()
+    }
+    
+    private func configView() {
         self.isUserInteractionEnabled = true
     }
     

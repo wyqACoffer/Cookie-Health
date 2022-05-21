@@ -18,9 +18,11 @@ class StyleViewController: UIViewController {
     var doubleStyleViewCallback: Block?
     
     var resultViewController: (UIViewController & RecognizedTextDataSource)?
+    var handleViewController: UIViewController?
     var textRecognitionRequest = VNRecognizeTextRequest()
     
     var style: Style = .single
+    var imageView = UIImageView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,12 +57,6 @@ class StyleViewController: UIViewController {
         }
     }
     
-    private func callCamera() {
-        let documentCameraViewController = VNDocumentCameraViewController()
-        documentCameraViewController.delegate = self
-        self.present(documentCameraViewController, animated: true)
-    }
-    
     private func configRequest() {
         textRecognitionRequest = VNRecognizeTextRequest(completionHandler: { (request, error) in
             guard let resultViewController = self.resultViewController else {
@@ -79,6 +75,12 @@ class StyleViewController: UIViewController {
         textRecognitionRequest.recognitionLevel = .accurate
         textRecognitionRequest.usesLanguageCorrection = false
         textRecognitionRequest.recognitionLanguages = ["zh-Hans"]
+    }
+    
+    private func callCamera() {
+        let documentCameraViewController = VNDocumentCameraViewController()
+        documentCameraViewController.delegate = self
+        self.present(documentCameraViewController, animated: true)
     }
     
     private func processImage(image: UIImage) {
@@ -104,14 +106,14 @@ class StyleViewController: UIViewController {
     }
     
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destination.
+     // Pass the selected object to the new view controller.
+     }
+     */
 }
 
 
@@ -120,15 +122,32 @@ extension StyleViewController: VNDocumentCameraViewControllerDelegate {
         self.resultViewController = ResultViewController()
         controller.dismiss(animated: true) {
             DispatchQueue.global(qos: .userInitiated).async {
-                for pageNumber in 0 ..< scan.pageCount {
-                    let image = scan.imageOfPage(at: pageNumber)
-                    self.processImage(image: image)
-                }
-                DispatchQueue.main.async {
-                    if let resultVC = self.resultViewController {
-                        self.navigationController?.pushViewController(resultVC, animated: true)
+                if gStyle == .double {
+                    let image = scan.imageOfPage(at: 0)
+                    itemImage = image
+                    DispatchQueue.main.async {
+                        self.handleViewController = HandleViewController()
+                        if let handleVC = self.handleViewController as? HandleViewController {
+                            handleVC.setImage(image: image)
+                            self.navigationController?.pushViewController(handleVC, animated: true)
+                        }
                     }
+                } else {
+                    self.configImage(scan: scan)
                 }
+            }
+        }
+    }
+    
+    private func configImage(scan: VNDocumentCameraScan) {
+        for pageNumber in 0 ..< scan.pageCount {
+            let image = scan.imageOfPage(at: pageNumber)
+            itemImage = image
+            self.processImage(image: image)
+        }
+        DispatchQueue.main.async {
+            if let resultVC = self.resultViewController {
+                self.navigationController?.pushViewController(resultVC, animated: true)
             }
         }
     }
